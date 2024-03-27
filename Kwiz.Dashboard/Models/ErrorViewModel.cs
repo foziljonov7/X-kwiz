@@ -1,4 +1,4 @@
-namespace Dashboard.Models
+namespace Kwiz.Dashboard.Models
 {
     public class ErrorViewModel
     {

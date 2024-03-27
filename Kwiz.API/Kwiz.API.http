@@ -1,0 +1,6 @@
+@Kwiz.API_HostAddress = http://localhost:5230
+
+GET {{Kwiz.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

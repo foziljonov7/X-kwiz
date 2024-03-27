@@ -1,8 +1,8 @@
-using Dashboard.Models;
+using Kwiz.Dashboard.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace Dashboard.Controllers
+namespace Kwiz.Dashboard.Controllers
 {
     public class HomeController : Controller
     {
