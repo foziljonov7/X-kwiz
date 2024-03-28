@@ -21,6 +21,52 @@ public class AppDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
+        builder.Entity<Quiz>(entity =>
+        {
+            entity.HasMany(q => q.Questions)
+                .WithOne(q => q.Quiz)
+                .HasForeignKey(q => q.QuizId);
+
+            entity.HasMany(q => q.Submissions)
+                .WithOne(s => s.Quiz)
+                .HasForeignKey(s => s.QuizId);
+        });
+
+        builder.Entity<Owner>(entity =>
+        {
+            entity.HasMany(o => o.Quizzes)
+                .WithOne(q => q.Owner)
+                .HasForeignKey(q => q.OwnerId);
+        });
+
+        builder.Entity<Question>(entity =>
+        {
+            entity.HasMany(q => q.Options)
+                .WithOne()
+                .HasForeignKey(q => q.QuestionId);
+        });
+
+        builder.Entity<Interest>(entity =>
+        {
+            entity.HasMany(i => i.InterestedTechnologies)
+                .WithOne(t => t.Interest)
+                .HasForeignKey(i => i.InterestId);
+        });
+
+        builder.Entity<Technology>(entity =>
+        {
+            entity.HasOne(t => t.Interest)
+                .WithMany(i => i.InterestedTechnologies)
+                .HasForeignKey(i => i.InterestId);
+        });
+
+        builder.Entity<Submission>(entity =>
+        {
+            entity.HasOne(s => s.Quiz)
+                .WithMany(q => q.Submissions)
+                .HasForeignKey(q => q.QuizId);
+        });
+
         base.OnModelCreating(builder);
     }
 }
