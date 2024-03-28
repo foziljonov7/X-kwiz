@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Kwiz.DataAccess\Kwiz.DataAccess.csproj" />
+  </ItemGroup>
+
 </Project>
