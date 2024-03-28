@@ -1,5 +1,11 @@
-﻿namespace Kwiz.DataAccess.Data;
+﻿using Kwiz.Domain.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
-public class IdentityDbContext
+namespace Kwiz.DataAccess.Data;
+
+public class IdentityDbContext(DbContextOptions options)
+    : IdentityDbContext<ApplicationUser>(options)
 {
+
 }

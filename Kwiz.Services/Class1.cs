@@ -1,7 +1,6 @@
-﻿namespace Kwiz.Services
-{
-    public class Class1
-    {
+﻿namespace Kwiz.Services;
 
-    }
+public class Class1
+{
+
 }
