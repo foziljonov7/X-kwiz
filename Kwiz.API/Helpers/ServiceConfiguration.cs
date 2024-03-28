@@ -12,9 +12,11 @@ public static class ServiceConfiguration
         var connectionStrings = configuration.GetConnectionString("localhost");
 
         services.AddDbContext<AppDbContext>(options
-            => options.UseNpgsql(connectionStrings));
+            => options.UseNpgsql(connectionStrings, 
+                b => b.MigrationsAssembly("Kwiz.DataAccess")));
 
         services.AddDbContext<IdentityDbContext>(options
-            => options.UseNpgsql(connectionStrings));
+            => options.UseNpgsql(connectionStrings,
+                b => b.MigrationsAssembly("Kwiz.DataAccess")));
     }
 }
