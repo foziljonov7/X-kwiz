@@ -37,6 +37,12 @@ public class QuizRepository : IQuizRepository
         return new GeneralResponse(true, "Successfully saved");
     }
 
+    public async Task<IEnumerable<Quiz>> GetByNamesAsync(string name)
+        => await dbContext.Quizzes
+            .AsNoTracking()
+            .Where(q => q.Title == name && q.Status == Status.Active)
+            .ToListAsync();
+
     public async Task<Quiz> GetQuizAsync(Guid id)
     {
         var quiz = await dbContext.Quizzes
@@ -54,11 +60,11 @@ public class QuizRepository : IQuizRepository
 
     public async Task<IEnumerable<Quiz>> GetQuizzesAsync()
         => await dbContext.Quizzes
+            .Where(q => q.Status == Status.Active)
             .Include(q => q.Owner)
             .Include(q => q.Questions)
                 .ThenInclude(q => q.Options)
             .Include(q => q.Submissions)
-            .Where(q => q.Status == Status.Active)
             .ToListAsync();
 
     public async Task<GeneralResponse> RemoveQuizAsync(Guid id)
