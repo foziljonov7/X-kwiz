@@ -1,4 +1,4 @@
-﻿namespace Kwiz.Domain.Entities;
+﻿namespace Kwiz.Domain.Enums;
 
 public enum Status
 {
