@@ -46,11 +46,12 @@ public class QuizRepository : IQuizRepository
     public async Task<Quiz> GetQuizAsync(Guid id)
     {
         var quiz = await dbContext.Quizzes
+            .Where(q => q.Id == id)
             .Include(q => q.Owner)
             .Include(q => q.Questions)
                 .ThenInclude(q => q.Options)
             .Include(q => q.Submissions)
-            .FirstOrDefaultAsync(q => q.Id == id);
+            .FirstOrDefaultAsync();
 
         if (quiz is null || quiz.Status is Status.Deleted)
             throw new NotSupportedException("Reference is null or there is some kind of interruption");
