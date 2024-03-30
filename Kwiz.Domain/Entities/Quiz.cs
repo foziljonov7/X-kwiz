@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Kwiz.Domain.Enums;
+using System.ComponentModel.DataAnnotations;
 
 namespace Kwiz.Domain.Entities;
 
@@ -19,6 +20,7 @@ public class Quiz
     public bool IsPublic { get; set; }
     public string[] Tags { get; set; }
     public string Code { get; set; }
+    public Status Status { get; set; }
     public Owner Owner { get; set; }
     public List<Question> Questions { get; set; }
     public List<Submission> Submissions { get; set; }
