@@ -3,23 +3,33 @@ using Kwiz.DataAccess.DTOs;
 using Kwiz.Domain.Entities;
 using Kwiz.Domain.Enums;
 using Kwiz.Infrastructure.Helpers;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 namespace Kwiz.Infrastructure.Repositories;
 public class QuizRepository : IQuizRepository
 {
+    private readonly IHttpContextAccessor httpContext;
     private readonly AppDbContext dbContext;
 
-    public QuizRepository(AppDbContext dbContext)
+    public QuizRepository(IHttpContextAccessor httpContext,
+        AppDbContext dbContext)
     {
+        this.httpContext = httpContext;
         this.dbContext = dbContext;
     }
     public async Task<GeneralResponse> CreateQuizAsync(QuizDTO newQuiz)
     {
+        var userId = httpContext.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+        if (!Guid.TryParse(userId, out Guid ownerId))
+            return new GeneralResponse(false, "Invalid user identifier format");
+
         var quiz = new Quiz
         {
             Id = Guid.NewGuid(),
-            OwnerId = newQuiz.OwnerId,
+            OwnerId = ownerId,
             Title = newQuiz.Title,
             Description = newQuiz.Description,
             CreatedAt = DateTime.UtcNow.AddHours(5),
@@ -68,7 +78,21 @@ public class QuizRepository : IQuizRepository
             .Include(q => q.Submissions)
             .ToListAsync();
 
-    public async Task<GeneralResponse> RemoveQuizAsync(Guid id)
+    public async Task<List<Quiz>> GetQuizzesByDisableAsync(Guid ownerId)
+        => await dbContext.Quizzes
+            .Where(q => q.OwnerId == ownerId && q.Status == Status.Disable)
+            .Include(q => q.Questions)
+            .ToListAsync();
+
+    public async Task<IEnumerable<Quiz>> GetQuizzesByOwnerIdAsync(Guid ownerId)
+        => await dbContext.Quizzes
+            .Where(q => q.OwnerId == ownerId && q.Status == Status.Active)
+            .Include(q => q.Questions)
+                .ThenInclude(q => q.Options)
+            .Include(q => q.Submissions)
+            .ToListAsync();
+
+    public async Task<GeneralResponse> RemoveQuizAsync(Guid id, Guid ownerId)
     {
         var quiz = await dbContext.Quizzes
             .FirstOrDefaultAsync(q => q.Id == id);
@@ -81,10 +105,13 @@ public class QuizRepository : IQuizRepository
         return new GeneralResponse(true, "Successfully deleted");
     }
 
-    public async Task<GeneralResponse> UpdateQuizAsync(Guid id, QuizDTO quiz)
+    public async Task<GeneralResponse> UpdateQuizAsync(
+            Guid id,
+            Guid ownerId,
+            QuizDTO quiz)
     {
         var updated = await dbContext.Quizzes
-            .FirstOrDefaultAsync(q => q.Id == id);
+            .FirstOrDefaultAsync(q => q.Id == id && q.OwnerId == ownerId);
 
         if (updated is null || updated.Status is Status.Disable)
             return new GeneralResponse(false, "Quiz not found");
