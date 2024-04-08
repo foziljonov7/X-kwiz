@@ -5,7 +5,7 @@ using Kwiz.Infrastructure.Helpers;
 namespace Kwiz.Infrastructure.Repositories;
 public interface IQuestionOptionRepository
 {
-    Task<IEnumerable<QuestionOptions>> GetQuestionOptionsAsync();
+    Task<IEnumerable<QuestionOptions>> GetQuestionOptionsAsync(Guid questionId);
     Task<QuestionOptions> GetQuestionOptionAsync(Guid id);
     Task<GeneralResponse> CreateQuestionOptionAsnc(QuestionOptionsDTO newOption);
     Task<GeneralResponse> UpdateQuestionOptionAsync(Guid id, QuestionOptionsDTO option);

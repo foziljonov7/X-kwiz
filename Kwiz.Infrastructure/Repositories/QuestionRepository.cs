@@ -38,7 +38,7 @@ public class QuestionRepository : IQuestionRepository
             .FirstOrDefaultAsync();
 
         if (question is null)
-            throw new ArgumentNullException(nameof(id), "Question is null");
+            throw new ArgumentNullException(nameof(id), " Question is null");
 
         return question;
     }

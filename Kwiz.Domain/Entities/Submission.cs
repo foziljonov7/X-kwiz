@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Kwiz.Domain.Enums;
+using System.ComponentModel.DataAnnotations;
 
 namespace Kwiz.Domain.Entities;
 
@@ -12,5 +13,6 @@ public class Submission
     public Guid QuizId { get; set; }
     public DateTime StartedDate { get; set; }
     public DateTime FinishedDate { get; set; }
+    //public Status Status { get; set; }
     public Quiz Quiz { get; set; }
 }
