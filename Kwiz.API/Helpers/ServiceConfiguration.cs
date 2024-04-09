@@ -1,4 +1,5 @@
 ﻿using Kwiz.DataAccess.Data;
+using Kwiz.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace Kwiz.API.Helpers;
@@ -18,5 +19,14 @@ public static class ServiceConfiguration
         services.AddDbContext<IdentityDbContext>(options
             => options.UseNpgsql(connectionStrings,
                 b => b.MigrationsAssembly("Kwiz.DataAccess")));
+    }
+
+    public static void ConfigureServices(
+        this IServiceCollection services)
+    {
+        services.AddScoped<IQuizRepository, QuizRepository>();
+        services.AddScoped<IQuestionRepository, QuestionRepository>();
+        services.AddScoped<IQuestionOptionRepository, QuestionOptionRepository>();
+        services.AddScoped<ISubmissionRepository, SubmissionRepository>();
     }
 }

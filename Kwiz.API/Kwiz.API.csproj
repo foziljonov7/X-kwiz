@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Kwiz.DataAccess\Kwiz.DataAccess.csproj" />
+    <ProjectReference Include="..\Kwiz.Infrastructure\Kwiz.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>
