@@ -5,17 +5,19 @@ VisualStudioVersion = 17.9.34701.34
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2C7E317E-8AC0-43DB-B0D0-71293DDB5AB8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kwiz.Domain", "Kwiz.Domain\Kwiz.Domain.csproj", "{3C27BA8F-C50B-415A-8C69-B68F3582A889}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kwiz.Domain", "Kwiz.Domain\Kwiz.Domain.csproj", "{3C27BA8F-C50B-415A-8C69-B68F3582A889}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kwiz.DataAccess", "Kwiz.DataAccess\Kwiz.DataAccess.csproj", "{13CB58F8-6033-4D41-A458-81D0BDA9724A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kwiz.DataAccess", "Kwiz.DataAccess\Kwiz.DataAccess.csproj", "{13CB58F8-6033-4D41-A458-81D0BDA9724A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kwiz.Infrastructure", "Kwiz.Infrastructure\Kwiz.Infrastructure.csproj", "{978906DD-C78E-4E50-8928-96E5184E46ED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kwiz.Infrastructure", "Kwiz.Infrastructure\Kwiz.Infrastructure.csproj", "{978906DD-C78E-4E50-8928-96E5184E46ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kwiz.Dashboard", "Kwiz.Dashboard\Kwiz.Dashboard.csproj", "{89D6487E-248A-4E7E-A941-4B43EF7C1404}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kwiz.Dashboard", "Kwiz.Dashboard\Kwiz.Dashboard.csproj", "{89D6487E-248A-4E7E-A941-4B43EF7C1404}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kwiz.API", "Kwiz.API\Kwiz.API.csproj", "{4B90276B-B977-43D9-BC96-FFB96AEEB1CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kwiz.API", "Kwiz.API\Kwiz.API.csproj", "{4B90276B-B977-43D9-BC96-FFB96AEEB1CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kwiz.Services", "Kwiz.Services\Kwiz.Services.csproj", "{6281BABE-294D-4B90-89DC-E98F9A14CCA8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kwiz.Services", "Kwiz.Services\Kwiz.Services.csproj", "{6281BABE-294D-4B90-89DC-E98F9A14CCA8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kwiz.Desktop", "Kwiz.Desktop\Kwiz.Desktop.csproj", "{55D183D5-510B-435B-BA2D-CA24B1E75DEA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +49,10 @@ Global
 		{6281BABE-294D-4B90-89DC-E98F9A14CCA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6281BABE-294D-4B90-89DC-E98F9A14CCA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6281BABE-294D-4B90-89DC-E98F9A14CCA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55D183D5-510B-435B-BA2D-CA24B1E75DEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55D183D5-510B-435B-BA2D-CA24B1E75DEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55D183D5-510B-435B-BA2D-CA24B1E75DEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55D183D5-510B-435B-BA2D-CA24B1E75DEA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -58,6 +64,7 @@ Global
 		{89D6487E-248A-4E7E-A941-4B43EF7C1404} = {2C7E317E-8AC0-43DB-B0D0-71293DDB5AB8}
 		{4B90276B-B977-43D9-BC96-FFB96AEEB1CE} = {2C7E317E-8AC0-43DB-B0D0-71293DDB5AB8}
 		{6281BABE-294D-4B90-89DC-E98F9A14CCA8} = {2C7E317E-8AC0-43DB-B0D0-71293DDB5AB8}
+		{55D183D5-510B-435B-BA2D-CA24B1E75DEA} = {2C7E317E-8AC0-43DB-B0D0-71293DDB5AB8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A703A6AF-2F23-4432-A10A-DCBC9A887771}
